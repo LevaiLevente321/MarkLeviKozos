@@ -17,8 +17,8 @@ public class Feldolgozo extends AppCompatActivity {
 
 
         Bundle extras = getIntent().getExtras();
-        if(extras == null) {
-            fogado.setText("Köszönjük a regisztrációt kedves: "+extras.getString("nev"));
+        if(extras != null) {
+            fogado.setText("Köszönjük a regisztrációt kedves: "+extras.get("nev").toString());
 
         }
 
