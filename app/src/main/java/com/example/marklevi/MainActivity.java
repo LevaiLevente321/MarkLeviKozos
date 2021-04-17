@@ -1,6 +1,8 @@
 package com.example.marklevi;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     EditText nevInput;
     EditText emailInput;
     EditText jelszoInput;
-
     Button regisztralButton;
 
     @Override
@@ -21,17 +22,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nevInput = (EditText) findViewById(R.id.nevInput);
-        emailInput = (EditText) findViewById(R.id.emailInput);
-        jelszoInput = (EditText) findViewById(R.id.jelszoInput);
+        nevInput =findViewById(R.id.nevInput);
+        emailInput =findViewById(R.id.emailInput);
+        jelszoInput =findViewById(R.id.jelszoInput);
 
-        regisztralButton = (Button) findViewById(R.id.regisztralButton);
+        regisztralButton =findViewById(R.id.regisztralButton);
         regisztralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nev = nevInput.getText().toString();
-                email = emailInput.getText().toString();
-                jelszo = jelszoInput.getText().toString();
+
+                Intent i=new Intent(MainActivity.this, Feldolgozo.class);
+
+                i.putExtra("nev" , nevInput.getText().toString());
+                i.putExtra("email" , emailInput.getText().toString());
+                i.putExtra("jelszo" , jelszoInput.getText().toString());
+
+                startActivity(i);
             }
         });
     }
